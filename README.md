@@ -18,7 +18,7 @@ It is very simple to use this shell. First you will need to compile all the sour
 ```c++
 make
 ```
-You will see an executable program called `myShell` appearing on your terminal. Then simply type `./myShell`, you will see the prompt information, which means you can use the shell already!
+You will see an executable program called myShell appearing on your terminal. Then simply type ./myShell, you will see the prompt information, which means you can use the shell already!
 
 ## Testing
 ---
@@ -109,11 +109,11 @@ doAllButDir.cpp:
 
 ### STEP3: MAKE
  - In bash, type make and then hit enter. You should see five executeable files genreated:
- i.      myShell
- ii.     parseArgument
- iii.    helloWorld
- iv.     printHelloWorld
- v.      kill
+ 1.      myShell
+ 2.     parseArgument
+ 3.    helloWorld
+ 4.     printHelloWorld
+ 5.      kill
  - Open myShell, you should see the following prompt:
  myShell: /home/yz395/ece551/mp_miniproject $
 
@@ -212,10 +212,10 @@ For example:
 
 NOTE: I design export in such way that:
 
-      i.For new var that never appear in the environment list before:
+      1.For new var that never appear in the environment list before:
        -set var will change their value but they won't be added into environment list unless you use export explicitly.
 
-      ii.For var that already exists in the environment list (like PATH)
+      2.For var that already exists in the environment list (like PATH)
       -set var will change their value and the value in the environment list will be updated at the same time without export
  
 (17) redirection (test27-30)
@@ -235,38 +235,38 @@ NOTE: I design export in such way that:
 (###): Nothing in this file, used to redirect stderr
 NOTE:
  I design redirection in such way that:
-  i.  It supports redirection symbol without space
+  1.  It supports redirection symbol without space
          ./myProgram<input>output
 
-  ii. 2> only supports two foramts:
+  2. 2> only supports two foramts:
         -(1) divided by space: ./myProgram 2> output
 	-(2) At the beginning of one argument:
 	     ./myProgram 2>output
       ./myProgram2>output will be interpreted as
       ./myProgram2 > output
 
-  iii. If multiple '>'s appear, myShell will create files for each '>', but only the file followd by last '>' will be the true destination of output:
+  3. If multiple '>'s appear, myShell will create files for each '>', but only the file followd by last '>' will be the true destination of output:
      ./myProgram >output1 >output2
      create output1 and output2 and redirect stdout to output2
 
-  iv. If multiple '<'s appear, myShell will inspect if any of the "in" redirect file doesn't exist. If any, then redirection stops and myShell will print error message:
+  4. If multiple '<'s appear, myShell will inspect if any of the "in" redirect file doesn't exist. If any, then redirection stops and myShell will print error message:
       -myShell: input: No such file or directory
 
       If all of the files exist, myShell will choose to operate "in" redirection at the last file
 
-   v. If redirection fails, none of the ">","2>" redirection files will be created
+  5. If redirection fails, none of the ">","2>" redirection files will be created
 
 
-  vi. The following format are considered as syntax error:
+  6. The following format are considered as syntax error:
      ./myProgram > output.txt <>
      ./myProgram > output.txt <
      
- vii. In the case below, arg1,arg2,arg3 will be treated as three command line arguments of myProgram
+  7. In the case below, arg1,arg2,arg3 will be treated as three command line arguments of myProgram
       ./myProgram arg1>output.txt arg2 arg3<input.txt
       
 Open test27-30 and type in the command into myShell manually, comparing the result to test_result.txt
       
-NOTE: If you do the same as what test file designates, you should look for the output file in ./TEST_HERE directory
+***NOTE: If you do the same as what test file designates, you should look for the output file in ./TEST_HERE directory***
 
 
 

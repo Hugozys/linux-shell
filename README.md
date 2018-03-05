@@ -109,11 +109,11 @@ doAllButDir.cpp:
 
 ### STEP3: MAKE
  - In bash, type make and then hit enter. You should see five executeable files genreated:
- 1.      myShell
- 2.     parseArgument
- 3.    helloWorld
- 4.     printHelloWorld
- 5.      kill
+ 1. myShell
+ 2. parseArgument
+ 3. helloWorld
+ 4. printHelloWorld
+ 5. kill
  - Open myShell, you should see the following prompt:
  myShell: /home/yz395/ece551/mp_miniproject $
 

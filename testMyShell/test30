@@ -1,0 +1,4 @@
+./helloWorld>./TEST_HERE/output_ignore.txt>./TEST_HERE/output_real.txt<./TEST_HERE/input_exist.txt
+./helloWorld<./TEST_HERE/input_notExist.txt<./TEST_HERE/input_real.txt
+./helloWorld <./TEST_HERE/input_exist.txt> ./TEST_HERE/output_error.txt >xo<
+./helloWorld <./TEST_HERE/input_exist.txt> ./TEST_HERE/output_error.txt >

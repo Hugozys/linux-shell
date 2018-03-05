@@ -1,0 +1,2 @@
+cat ./README | grep step | wc
+less ./commandShell.txt | head -17 | tail -10 | cat > ./TEST_HERE/truncate.txt

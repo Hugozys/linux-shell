@@ -1,0 +1,13 @@
+./testArg0
+./testArg1 a b c
+./testArg2\ a b c
+./testArg3 a \  b
+./testArg4 a 	b
+./testArg5 a \ \  b
+./testArg6 \a
+./testArg7 a                          b
+./testArg8 a\			       b
+./testArg9 a\\\\\\\\  \ b
+./testArg10 a\\\\\\a b
+./testArg11 hardcornercase(eof) a\\\\\
+

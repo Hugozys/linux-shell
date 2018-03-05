@@ -1,0 +1,128 @@
+							BREAK
+GOAL: Improve myShell in two ways
+      (1) Search the PATH environment variable for commands
+      (2) Pass arguments to the program
+
+
+Problems to solve:
+STEP2:
+1. How to use the PATH environment (Read getenv)
+ -- Usage: getenv("PATH") will return a pointer(char *) pointing at a string in which all of the paths are listed delimited by colon
+ -- if no / exists in the command, search PATH
+    if find the program. execute it
+ -- Otherwise, myShell should print:
+    Command commandName not found
+    myShell $
+ -- If the path name does contain a / in it, I only need to look in the specified directory(I may want to consult my 097 assignment)
+
+2. How to split the arguments
+ -- In STEP2, I use stream extraction operator to do shi.However,this time it involves esacpe character, I may need to reconsider the implementation (I've already done that)
+
+3. Can't run clear and emacs, There is something wrong with environment variables
+ --Now I can run clear and emacs by setting envp to {"TERM=xterm",NULL},but now emacs shows warnings when I open it
+4. Can't run ./myShell in ./myShell, program throws bad_alloc exception and terminates
+
+NOTE: question 3 and 4 relate to the setting of environment variables which I will manipulate in STEP3, for now I just need to use the same enviornment which myShell uses when being run.(That is, pass the third arugment envp in the paremeter list of main function directly to exceve)
+======================================================
+
+WORKING ON SOME EXAMPLES ON YOURSELF:
+(1)
+   myShell $ pathexist
+   I'm executing the program
+   Program exits with status 0
+   myShell $
+
+(2)
+  myShell $ pathnotexist
+  command pathnotexist not found
+  myShell $
+
+(3)
+  myShell $ ./testArg1 a b c
+  output argv[0]: ./testArg1
+  output argv[1]: a
+  output argv[2]: b
+  output argv[3]: c
+  Program exists with status 0
+  myShell $
+
+(4)
+  myShell $ ./testArg2 a \ \  b c
+  output argv[0]: ./testArg2
+  output argv[1]: a
+  output argv[2]: space
+  output argv[3]: space
+  output argv[4]: b
+  output argv[5]: c
+  Program exists with status 0
+  myShell $
+
+(5)
+ myShell $ ./testArg3 a a\\\a b
+ output argv[0]: ./testArg3
+ output argv[1]: a
+ output argv[2]: a\\\a
+ output argv[3]: b
+ Program exists with status 0
+ myShell $
+
+(6)
+ myShell $ ./testArg4 a c \ b
+ output argv[0]: ./testArg4
+ output argv[1]: a
+ output argv[2]: c
+ output argv[3]:  b (space = 1)
+ Program exists with status 0
+ myShell $
+
+(7)
+ myShell $ ./testArg5 a    c
+ output argv[0]: a
+ output argv[1]: c
+ Program exists with status 0
+ myShell $
+
+(8)
+ myShell $ ./testArg5 a\	c
+ output argv[0]: a      (tab = 1)
+ output argv[1]: c
+ Program exists with status 0
+ myShell $
+ 
+==========================================
+OO DESIGN:
+
+STEP2:
+
+string programName -- This is to store relative programName in case that we may need it to display error message(e.g: permission denied)
+char ** argv -- command line argument to pass into child
+int argc  -- number of argv to pass into child
+char ** envp -- environment variable to pass into child
+int status -- status of child process
+pid_t cpid -- return value of fork(used to tell child or parent)
+pid_t w   -- used when waiting for child to terminate
+bool hasProgram -- the program exists in the PATH
+bool pathError  -- error happens when translating to absolute path
+
+
+This shell class may have the following method:
+
+- void requestInput() [request input from the user by output myShell $ ]
+- void parseInput() [parse the information input by user] [ WHICH I NEED TO MODIFY ]
+- int getArgc() const [get the argc]
+- char ** getArgv() const [get the argv]
+- myShell() [constructor]
+- char *str2cstr(const string & str) [change string to cstr]
+- void forkAndExecve() [fork and execve and wait for child to respond]
+- void storeArgv(vector<string> & vec) [store each argument that is used into argv field of myShell class]
+- vector<string> seperate(stringstream &ss) [sepearte the line read from std::in into words] [ WHICH I NEED TO MODIFY]
+- bool isPath() [check whether there is / in this argument]
+- void replaceRealPath() [substitue relative path with absolute path]
+- void replaceRealProgram() [find the program appearing in the PATH and replace the program name with real path]
+
+
+
+
+I MAY want to add more fields and methods when procede further.
+
+ 

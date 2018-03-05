@@ -1,0 +1,7 @@
+ls > ./TEST_HERE/ls.txt
+./sayHi > ./TEST_HERE/output_exist.txt
+./sayHi > ./TEST_HERE/output_notExist.txt
+./sayHi 2> ./TEST_HERE/error_exist.txt
+./sayHi 2> ./TEST_HERE/error_notExist.txt
+./helloWorld < ./TEST_HERE/input_exist.txt > ./TEST_HERE/output_combine.txt
+./helloWorld < ./TEST_HERE/input_notExist.txt > ./TEST_HERE/output_combine_2.txt

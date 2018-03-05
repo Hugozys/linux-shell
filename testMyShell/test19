@@ -1,0 +1,4 @@
+set ECE_551 A flipped class
+set ABC something
+echo $ECE_551$ABC
+echo $ECE_551\ $ABC

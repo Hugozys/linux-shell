@@ -1,0 +1,12 @@
+./parseArgument ./testArg0
+./parseArgument ./testArg1 a b c
+./parseArgument ./testArg2\ a b c
+./parseArgument ./testArg3 a \  b
+./parseArgument ./testArg4 a 	b
+./parseArgument ./testArg5 a \ \  b
+./parseArgument ./testArg6 \a
+./parseArgument ./testArg7 a                          b
+./parseArgument ./testArg8 a\			       b
+./parseArgument ./testArg9 a\\\\\\\\  \ b
+./parseArgument ./testArg10 a\\\\\\a b
+./parseArgument ./testArg11 hardcornercase(eof) a\\\\\

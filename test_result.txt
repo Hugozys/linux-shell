@@ -1,0 +1,975 @@
+**Input testcase test01**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./kill
+terminate called after throwing an instance of 'std::exception'
+  what():  std::exception
+Program was killed by signal 6
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ exit
+
+
+**Input testcase test02**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test03**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test04**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg0
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg0 (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg1 a b c
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg1 (space = 0, tab = 0 )
+argv[2]: a (space = 0, tab = 0 )
+argv[3]: b (space = 0, tab = 0 )
+argv[4]: c (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg2\ a b c
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg2 a (space = 1, tab = 0 )
+argv[2]: b (space = 0, tab = 0 )
+argv[3]: c (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg3 a \  b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg3 (space = 0, tab = 0 )
+argv[2]: a (space = 0, tab = 0 )
+argv[3]:   (space = 1, tab = 0 )
+argv[4]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg4 a 	b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg4 (space = 0, tab = 0 )
+argv[2]: a (space = 0, tab = 0 )
+argv[3]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg5 a \ \  b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg5 (space = 0, tab = 0 )
+argv[2]: a (space = 0, tab = 0 )
+argv[3]:    (space = 2, tab = 0 )
+argv[4]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg6 \a
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg6 (space = 0, tab = 0 )
+argv[2]: \a (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg7 a                          b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg7 (space = 0, tab = 0 )
+argv[2]: a (space = 0, tab = 0 )
+argv[3]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg8 a\			       b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg8 (space = 0, tab = 0 )
+argv[2]: a	 (space = 0, tab = 1 )
+argv[3]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg9 a\\\\\\\\  \ b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg9 (space = 0, tab = 0 )
+argv[2]: a\\\\\\\  (space = 1, tab = 0 )
+argv[3]:  b (space = 1, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg10 a\\\\\\a b
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg10 (space = 0, tab = 0 )
+argv[2]: a\\\\\\a (space = 0, tab = 0 )
+argv[3]: b (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./parseArgument ./testArg11 hardcornercase(eof) a\\\\\
+argv[0]: ./parseArgument (space = 0, tab = 0 )
+argv[1]: ./testArg11 (space = 0, tab = 0 )
+argv[2]: hardcornercase(eof) (space = 0, tab = 0 )
+argv[3]: a\\\\\ (space = 0, tab = 0 )
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test05**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ls -lha
+total 8.1M
+drwxrwxr-x  10 yz395 yz395 4.0K Dec  2 21:28 .
+drwxr-xr-x 109 yz395 yz395 4.0K Nov 29 19:58 ..
+-rw-rw-r--   1 yz395 yz395 2.8K Dec  2 18:09 accessVar.cpp
+-rw-rw-r--   1 yz395 yz395 490K Dec  2 21:08 accessVar.o
+drwxrwxr-x   2 yz395 yz395  130 Dec  1 13:35 backUp
+-rw-rw-r--   1 yz395 yz395  750 Dec  1 21:55 changeDIR.cpp
+-rw-rw-r--   1 yz395 yz395 355K Dec  2 21:08 changeDIR.o
+-rw-rw-r--   1 yz395 yz395 5.6K Dec  2 11:31 commandShell.txt
+-rwxrwxr-x   1 yz395 yz395 437K Dec  2 20:30 constructor
+-rw-rw-r--   1 yz395 yz395 827K Dec  2 20:20 constructor_test.o
+-rw-rw-r--   1 yz395 yz395  913 Dec  1 22:20 doAllButDir.cpp
+-rw-rw-r--   1 yz395 yz395 371K Dec  2 21:08 doAllButDir.o
+drwxrwxr-x   2 yz395 yz395  323 Dec  2 20:59 documentation
+drwxrwxr-x   2 yz395 yz395 4.0K Dec  1 12:40 experimentArea
+-rw-rw-r--   1 yz395 yz395 3.8K Dec  2 14:34 findProgram.cpp
+-rw-rw-r--   1 yz395 yz395 441K Dec  2 21:08 findProgram.o
+-rw-rw-r--   1 yz395 yz395 1.6K Dec  2 21:15 forkAndExecve.cpp
+-rw-rw-r--   1 yz395 yz395 385K Dec  2 21:28 forkAndExecve.o
+-rw-------   1 yz395 yz395  226 Dec  2 17:58 fuck.txt
+-rwxrwxr-x   1 yz395 yz395  96K Dec  2 19:58 helloWorld
+-rw-rw-r--   1 yz395 yz395  382 Nov 30 22:36 helloWorld.cpp
+-rw-rw-r--   1 yz395 yz395 167K Dec  2 19:58 helloWorld.o
+drwxrwxr-x   2 yz395 yz395   64 Nov 10 00:14 .honor
+-rwxrwxr-x   1 yz395 yz395  71K Dec  2 20:37 kill
+-rw-rw-r--   1 yz395 yz395  126 Dec  2 11:08 kill.cpp
+-rw-rw-r--   1 yz395 yz395 136K Dec  2 20:37 kill.o
+-rw-rw-r--   1 yz395 yz395  966 Dec  2 20:37 Makefile
+-rwxrwxr-x   1 yz395 yz395 983K Dec  2 21:28 myShell
+-rw-rw-r--   1 yz395 yz395 3.5K Dec  2 21:28 myShell.cpp
+-rw-rw-r--   1 yz395 yz395 6.7K Dec  2 21:08 myShell.h
+-rw-rw-r--   1 yz395 yz395 727K Dec  2 21:28 myShell.o
+-rw-rw-r--   1 yz395 yz395 6.7K Nov 10 00:17 numerics.txt
+-rwxrwxr-x   1 yz395 yz395 103K Dec  2 19:58 parseArgument
+-rw-rw-r--   1 yz395 yz395  512 Nov 30 22:55 parseArgument.cpp
+-rw-rw-r--   1 yz395 yz395 179K Dec  2 19:58 parseArgument.o
+-rw-rw-r--   1 yz395 yz395 5.2K Dec  2 16:13 parseInput.cpp
+-rw-rw-r--   1 yz395 yz395 606K Dec  2 21:08 parseInput.o
+-rw-rw-r--   1 yz395 yz395 2.8K Dec  2 21:03 pipeProgram.cpp
+-rw-rw-r--   1 yz395 yz395 662K Dec  2 21:08 pipeProgram.o
+-rwxrwxr-x   1 yz395 yz395 102K Dec  2 19:58 printHelloWorld
+-rw-rw-r--   1 yz395 yz395  252 Nov 29 12:35 printHelloWorld.cpp
+-rw-rw-r--   1 yz395 yz395 181K Dec  2 19:58 printHelloWorld.o
+-rw-rw-r--   1 yz395 yz395 2.4K Dec  2 17:49 README
+-rw-rw-r--   1 yz395 yz395 6.0K Dec  2 17:55 redirPipe.cpp
+-rw-rw-r--   1 yz395 yz395 560K Dec  2 21:08 redirPipe.o
+-rwxrw-r--   1 yz395 yz395  352 Nov 30 20:49 run_all.sh
+-rwxrwxr-x   1 yz395 yz395  72K Dec  2 20:37 sayHi
+-rw-rw-r--   1 yz395 yz395  196 Nov 30 22:25 sayHi.cpp
+-rw-rw-r--   1 yz395 yz395 137K Dec  2 20:37 sayHi.o
+drwxrwxr-x   2 yz395 yz395 4.0K Dec  2 20:38 test_function
+drwxrwxr-x   2 yz395 yz395   82 Dec  2 21:28 TEST_HERE
+-rw-rw-r--   1 yz395 yz395  11K Dec  2 17:21 TESTING.txt
+drwxrwxr-x   2 yz395 yz395 4.0K Dec  2 21:18 testMyShell
+-rw-rw-r--   1 yz395 yz395 4.7K Dec  2 21:28 test_result.txt
+drwxrwxr-x   2 yz395 yz395   95 Nov 30 21:10 TODO
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ls notExist
+ls: cannot access 'notExist': No such file or directory
+Program exited with status 2
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test06**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo Hello from echo
+Hello from echo
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test07**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ clear
+[3;J[H[2JProgram exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test08**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ make myShell
+make: 'myShell' is up to date.
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test09**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ rm ./TEST_HERE/file2Remove
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ rm fileNOTEXIST
+rm: cannot remove 'fileNOTEXIST': No such file or directory
+Program exited with status 1
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test10**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ mv ./TEST_HERE/file2Move ./TEST_HERE/fileMoved
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test11**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cp ./TEST_HERE/file2Copy ./TEST_HERE/fileCopyed
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test12**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ env
+XDG_SESSION_ID=30954
+SHELL=/bin/bash
+TERM=xterm
+SSH_CLIENT=10.197.114.24 58039 22
+SSH_TTY=/dev/pts/115
+USER=yz395
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+MAIL=/var/mail/yz395
+PWD=/home/yz395/ece551/mp_miniproject
+EDITOR=emacs -nw
+LANG=en_US.UTF-8
+HOME=/home/yz395
+SHLVL=2
+LOGNAME=yz395
+VISUAL=emacs -nw
+SSH_CONNECTION=10.197.114.24 58039 152.3.77.223 22
+LESSOPEN=| /usr/bin/lesspipe %s
+XDG_RUNTIME_DIR=/run/user/1163
+LESSCLOSE=/usr/bin/lesspipe %s %s
+_=./myShell
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test13**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ notExist
+command notExist not found
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./notExist
+-myShell: ./notExist: No such file or directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./README
+-myShell: ./README: Permission denied
+Program exited with status 1
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./
+-myShell: ./: is a directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./sayHi
+Hi! I'm looking forward to Avengers 4!
+greetings from stderr!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test14**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cd /bin
+*****************************
+
+myShell:/bin $ cd ~ 
+*****************************
+
+myShell:/home/yz395 $ cd /home/yz395/ece551/mp_miniproject 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cd ../
+*****************************
+
+myShell:/home/yz395/ece551 $ cd 
+*****************************
+
+myShell:/home/yz395 $ cd /notExist 
+-myShell: cd: /notExist: No such file or directory
+*****************************
+
+myShell:/home/yz395 $ cd /home/yz395/ece551/mp_miniproject
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test15**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ABC something
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ABC
+something
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set $notSet ABC others
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ABC
+others
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test16**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set %@ABC invalid
+-myShell: %@ABC: invalid identifier
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test17**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE_551 A flipped class
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551
+A flipped class
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test18**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE_551 A flipped class
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551123
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test19**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE_551 A flipped class
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ABC something
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551$ABC
+A flipped classsomething
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551\ $ABC
+A flipped class something
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test20**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ABC something
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ABC-#123
+something-#123
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test21**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE_551 A flipped class
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551
+A flipped class
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE_551 is about to end
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE_551
+is about to end
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test22**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $-
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $#
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $@
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $!
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $$
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test23**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE550
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ECE550
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test24**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $TERM
+xterm
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $PWD
+/home/yz395/ece551/mp_miniproject
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test25**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set path $PATH
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $path
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set PATH badPath
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $PATH
+command echo not found
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ env
+command env not found
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set PATH $path
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ clear
+[3;J[H[2JProgram exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test26**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ECE551 Drew
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ env
+XDG_SESSION_ID=30954
+SHELL=/bin/bash
+TERM=xterm
+SSH_CLIENT=10.197.114.24 58039 22
+SSH_TTY=/dev/pts/115
+USER=yz395
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+MAIL=/var/mail/yz395
+PWD=/home/yz395/ece551/mp_miniproject
+EDITOR=emacs -nw
+LANG=en_US.UTF-8
+HOME=/home/yz395
+SHLVL=2
+LOGNAME=yz395
+VISUAL=emacs -nw
+SSH_CONNECTION=10.197.114.24 58039 152.3.77.223 22
+LESSOPEN=| /usr/bin/lesspipe %s
+XDG_RUNTIME_DIR=/run/user/1163
+LESSCLOSE=/usr/bin/lesspipe %s %s
+_=./myShell
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ export ECE551
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ env
+XDG_SESSION_ID=30954
+SHELL=/bin/bash
+TERM=xterm
+SSH_CLIENT=10.197.114.24 58039 22
+SSH_TTY=/dev/pts/115
+USER=yz395
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+MAIL=/var/mail/yz395
+PWD=/home/yz395/ece551/mp_miniproject
+EDITOR=emacs -nw
+LANG=en_US.UTF-8
+HOME=/home/yz395
+SHLVL=2
+LOGNAME=yz395
+VISUAL=emacs -nw
+SSH_CONNECTION=10.197.114.24 58039 152.3.77.223 22
+LESSOPEN=| /usr/bin/lesspipe %s
+XDG_RUNTIME_DIR=/run/user/1163
+LESSCLOSE=/usr/bin/lesspipe %s %s
+_=./myShell
+ECE551=Drew
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ export
+-myShell: Usage: export <var>
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ export ABC123
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ env
+XDG_SESSION_ID=30954
+SHELL=/bin/bash
+TERM=xterm
+SSH_CLIENT=10.197.114.24 58039 22
+SSH_TTY=/dev/pts/115
+USER=yz395
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+MAIL=/var/mail/yz395
+PWD=/home/yz395/ece551/mp_miniproject
+EDITOR=emacs -nw
+LANG=en_US.UTF-8
+HOME=/home/yz395
+SHLVL=2
+LOGNAME=yz395
+VISUAL=emacs -nw
+SSH_CONNECTION=10.197.114.24 58039 152.3.77.223 22
+LESSOPEN=| /usr/bin/lesspipe %s
+XDG_RUNTIME_DIR=/run/user/1163
+LESSCLOSE=/usr/bin/lesspipe %s %s
+_=./myShell
+ECE551=Drew
+ABC123=
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ export !#%
+-myShell: invalid variable
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test27**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ls > ./TEST_HERE/ls.txt
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./sayHi > ./TEST_HERE/output_exist.txt
+greetings from stderr!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./sayHi > ./TEST_HERE/output_notExist.txt
+greetings from stderr!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./sayHi 2> ./TEST_HERE/error_exist.txt
+Hi! I'm looking forward to Avengers 4!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./sayHi 2> ./TEST_HERE/error_notExist.txt
+Hi! I'm looking forward to Avengers 4!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld < ./TEST_HERE/input_exist.txt > ./TEST_HERE/output_combine.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld < ./TEST_HERE/input_notExist.txt > ./TEST_HERE/output_combine_2.txt
+-myShell: ./TEST_HERE/input_notExist.txt: No such file or directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test28**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld<./TEST_HERE/input_exist.txt>./TEST_HERE/output_noSpace.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld2>./TEST_HERE/error_noSpace.txt
+-myShell: ./helloWorld2: No such file or directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld<./TEST_HERE/input_noSpace.txt
+-myShell: ./TEST_HERE/input_noSpace.txt: No such file or directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld>./TEST_HERE/output_combine_nospace.txt<./TEST_HERE/input_exist.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld>./TEST_HERE/output_combine_nospace2.txt 2>./TEST_HERE/error_combine_nospace.txt<./TEST_HERE/input_exist.txt
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test29**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld cmdArg1 cmdArg2 < ./TEST_HERE/input_exist.txt > ./TEST_HERE/output_cmd.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld cmdArg1<./TEST_HERE/input_exist.txt cmdArg2>./TEST_HERE/output_cmd_2.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test30**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld>./TEST_HERE/output_ignore.txt>./TEST_HERE/output_real.txt<./TEST_HERE/input_exist.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld<./TEST_HERE/input_notExist.txt<./TEST_HERE/input_real.txt
+-myShell: ./TEST_HERE/input_notExist.txt: No such file or directory
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld <./TEST_HERE/input_exist.txt> ./TEST_HERE/output_error.txt >xo<
+-myShell: syntax error near unexpected token '<'
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld <./TEST_HERE/input_exist.txt> ./TEST_HERE/output_error.txt >
+-myShell: syntax error near unexpected token '>'
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test31**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cat ./README | wc
+Program exited with status 0
+     63     415    2389
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test32**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ./helloWorld < ./TEST_HERE/input_exist.txt |./printHelloWorld > ./TEST_HERE/pipeline.txt
+Test stderr redirection! Hello World!
+Program exited with status 0
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test33**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cat ./README | grep step | wc
+Program exited with status 0
+      3      32     181
+Program exited with status 0
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ less ./commandShell.txt | head -17 | tail -10 | cat > ./TEST_HERE/truncate.txt
+Program exited with status 0
+Program exited with status 0
+Program exited with status 0
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test34**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cat ./README |
+-myShell: Invalid Use of |
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test35**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cat ./README || wc
+-myShell: Invalid Use of |
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test36**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ cd | ls
+Program exited with status 0
+accessVar.cpp
+accessVar.o
+backUp
+changeDIR.cpp
+changeDIR.o
+commandShell.txt
+constructor
+constructor_test.o
+doAllButDir.cpp
+doAllButDir.o
+documentation
+experimentArea
+findProgram.cpp
+findProgram.o
+forkAndExecve.cpp
+forkAndExecve.o
+fuck.txt
+helloWorld
+helloWorld.cpp
+helloWorld.o
+kill
+kill.cpp
+kill.o
+Makefile
+myShell
+myShell.cpp
+myShell.h
+myShell.o
+numerics.txt
+parseArgument
+parseArgument.cpp
+parseArgument.o
+parseInput.cpp
+parseInput.o
+pipeProgram.cpp
+pipeProgram.o
+printHelloWorld
+printHelloWorld.cpp
+printHelloWorld.o
+README
+redirPipe.cpp
+redirPipe.o
+run_all.sh
+sayHi
+sayHi.cpp
+sayHi.o
+test_function
+TEST_HERE
+TESTING.txt
+testMyShell
+test_result.txt
+TODO
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ ls | exit
+Program exited with status 0
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ set ABC 123 | wc
+Program exited with status 0
+      0       0       0
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ echo $ABC
+
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+
+**Input testcase test37**
+============================================
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ mkdir ./TEST_HERE/makedir
+Program exited with status 0
+*****************************
+
+myShell:/home/yz395/ece551/mp_miniproject $ 
+
+

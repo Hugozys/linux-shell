@@ -1,0 +1,7 @@
+cd /bin
+cd ~ 
+cd /home/yz395/ece551/mp_miniproject 
+cd ../
+cd 
+cd /notExist 
+cd /home/yz395/ece551/mp_miniproject

@@ -1,0 +1,2 @@
+set ABC something
+echo $ABC-#123

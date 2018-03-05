@@ -1,0 +1,91 @@
+						BREAK
+GOAL: Change directories and variables
+(1) Add cd command (Done)
+(2) myShell should provide access to variables.
+
+
+Rules:
+(1) The prompt should show the directory before the $
+    For example:
+    myShell: /home/yz395/ece551/mp_miniproject $
+    (Done)
+    
+TBD:
+(2) A variable name must be a combination of letters(case sensitive), underscores and numbers,
+===============================================================================================
+
+Problems to Solve:
+1. When myShell initiates, it should print a prompt with user's current working directory, how to do this?
+(In this case you probably want to use environment variable PWD)
+
+2. When a user types cd XXXXXX, myShell should parse this command and it finds that cd is the first argument, so it notices that this is a changedir command, it should call changedir function to change current working directory. If change fails, it should return -1, otherwise it should return 0
+
+3. Since prompt will appear before user does anything else, in the beginning of every while loop, you should read PWD and pass that information into your requestInput function. You may need to find a way to get the current working directory.(You may find getenv very useful in this problem)
+
+                                                     (DONE)
+-----------------------------------------------------------------------------------------------
+4. (SET) Every loop myShell need to check argv[0], if it is set, then we have a special command to deal with
+  - first check whether argv[1] is NULL
+  - Also whether the variable name is valid
+  - Then you need to put everything after set into one string(You may need a map class to do this)
+  - How should the program behave if a user tries to use an undefined var? (output literally)
+  (e.g ./myProgram $undefined)
+  - How should the program behave if a user used invalid variable name convention? (error message)
+NOTE: THIS STEP SHOULD BE DONE IN THE PARSEINPUT
+
+5. Before execute the program, myShell should check every argument in argv, if the first char is a $, then myShell needs to looking for the map to find the corresponding value for this variable. If found then replace it with the new value, otherwise keep it intact.
+  - some cases you need to deal with:
+  set abc123 good
+  $abc123456 = $abc123456
+  $abc123-456 = good-456
+  456$abc123 = 456good
+  456$abc123$abc123 = 456goodgood
+  
+
+6. export var
+  -Can we have multiple variables to export ?? (I choose not to)
+  -check argv[0] to make sure it is export command ()
+  -check argv[1] exist ()
+  -What if the var is about to export hasn't been defined?? (This is invalid)
+  -What if the var is about to export is invalid? (Error Message)
+  -YOU NEED TO USE ENVIRON TO PASS IN THE ENVIRONMENT LIST SINCE getenv() ONLY CHANGES THE VALUE IN THIS LIST
+  
+
+=============================================================
+OO DESIGN:
+
+STEP3:
+
+string programName -- This is to store relative programName in case that we may need it to display error message(e.g: permission denied)
+char ** argv -- command line argument to pass into child
+int argc  -- number of argv to pass into child
+char ** envp -- environment variable to pass into child
+int status -- status of child process
+pid_t cpid -- return value of fork(used to tell child or parent)
+pid_t w   -- used when waiting for child to terminate
+bool hasProgram -- the program exists in the PATH
+bool pathError  -- error happens when translating to absolute path
+bool isSet -- whether it is a set command or not
+
+This shell class may have the following method:
+
+- void requestInput() [request input from the user by output myShell $ ]
+- void parseInput() [parse the information input by user] [ WHICH I NEED TO MODIFY ]
+- int getArgc() const [get the argc]
+- char ** getArgv() const [get the argv]
+- myShell() [constructor]
+- char *str2cstr(const string & str) [change string to cstr]
+- void forkAndExecve() [fork and execve and wait for child to respond]
+- void storeArgv(vector<string> & vec) [store each argument that is used into argv field of myShell class]
+- vector<string> seperate(stringstream &ss) [sepearte the line read from std::in into words] [ WHICH I NEED TO MODIFY]
+- bool isPath() [check whether there is / in this argument]
+- void replaceRealPath() [substitue relative path with absolute path]
+- void replaceRealProgram() [find the program appearing in the PATH and replace the program name with real path]
+- bool isSet() [check whether it is set]
+- void setCommand(stringstream & setVar, map<string,string> &varMap) [deal with set command]
+- void exportVar(map<string,string> & varMap) [export var]
+- void replaceVar(map<string,string> & varMap ) [replace all of the variables with their value]
+
+
+
+I MAY want to add more fields and methods when procede further.

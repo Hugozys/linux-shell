@@ -1,0 +1,40 @@
+test01  => exit_kill
+test02  => EOF
+test03  => return
+test04  => readArg
+test05  => bincmd_ls
+test06  => bincmd_echo
+test07  => bincmd_clear
+test08  => bincmd_make
+test09  => bincmd_rm
+test10 => bincmd_mv
+test11 => bincmd_cp
+test12 => bincmd_env
+test13 => slashProgram
+test14 => cd
+test15 => set_ABC
+test16 => set_invalid
+test17 => set_ECE_551
+test18 => set_ECE_551123
+test19 => set_Multiple
+test20 => set_-#
+test21 => set_change
+test22 => set_dollar
+test23 => set_empty
+test24 => set_system_var
+test25 => export_PATH
+test26 => export_NEW_VAR
+test27 => redirection_normal
+test28 => redirection_noSpace_combine
+test29 => redirection_cmdArgument
+test30 => redirection_errors
+test31 => pipeline_cat_wc
+test32 => pipeline_redir
+test33 => pipeline_three
+test34 => pipeline_error_1
+test35 => pipeline_error_2
+test36 => pipeline_built_in
+
+Update:
+test37 => bincmd_mkdir
+

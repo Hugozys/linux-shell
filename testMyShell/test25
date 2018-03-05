@@ -1,0 +1,7 @@
+set path $PATH
+echo $path
+set PATH badPath
+echo $PATH
+env
+set PATH $path
+clear

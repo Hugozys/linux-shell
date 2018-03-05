@@ -1,0 +1,2 @@
+rm ./TEST_HERE/file2Remove
+rm fileNOTEXIST

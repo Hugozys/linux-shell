@@ -1,0 +1,8 @@
+create newShell
+request Input
+parseInput
+split input according to |
+create myPrograms according to num of programs
+For every program parseInput and store information
+fork() all of the programs
+

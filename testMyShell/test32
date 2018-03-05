@@ -1,0 +1,2 @@
+./helloWorld < ./TEST_HERE/input_exist.txt |./printHelloWorld > ./TEST_HERE/pipeline.txt
+

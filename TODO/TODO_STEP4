@@ -1,0 +1,72 @@
+			Break
+GOAL:
+(1) Implement input redirection and output redirection
+(2) Implement pipeline
+
+
+Problems to solve:
+(1) First you need to be familiar with the functionality of redirection. To achieve this, you need to watch some videos and introduction about linux redirection command
+ - ./program > output.txt redirect std::cout to a file called output.txt (if file does exist, overwrite it, otherwise, create a new file)
+ 
+ - ./program  >> output.txt redirect std::cout to a file and append the context.(If file doesn't eixst, create a new file)
+ 
+ - ./program 2> stderr.txt redirect std::cerr to a file called stderr.txt
+ 
+ - ./program 2>> stderr.txt redirect std::cerr to a file and append the context
+ 
+ - ./program &> all.txt redirect std::cout and std::cerr to a file
+ 
+ - ./program &>> all.txt
+
+ - ./program < stdin.txt redirect std::in to a file
+
+ - Your shell may also be able to do the following:
+ ./program < stdin.txt > stdcout.txt
+
+--------------------------------------------------------------------------------------------------------------
+FOR NOW WE ONLY NEED TO IMPLEMENT > < AND 2>
+(2) Tricky things
+    #01 In bash whitespaces don't affect the interpretation of redirection:
+    	for example ./program<stdin.txt is legal
+    #02 In bash if you do the following:
+        - ./program<file1.txt<file2.txt (file1.txt will be ignored)
+	- ./program>file1.txt>file2.txt (file1.txt will be created but std::cout will be redirected to file2.txt)
+    #04 argument that doesn't have a redirection operator before it should be the actual argument parsed into the program that is about to execute
+    #05 How to redirect std::in into a file? How to redirect std::out into a file? (DONE)
+    #06 ./program 2>something.txt will redirect std:cerr to something.txt
+    #07 ./program 32>HAHA.txt will take 32 as the command line argument and redirect std::cout to HAHA.txt
+
+POSSIBLE TESTCASES:
+(1) ./helloWorld > output_exist.txt
+(2) ./helloWorld > output_notExist.txt
+(3) ./helloWorld 2> error_exist.txt
+(4) ./helloWorld 2> errror_notExist.txt
+(5) ./helloWorld < input_exist.txt
+(6) ./helloWorld < input_notExist.txt
+(7) ./helloWorld>output_noSpace.txt
+(8) ./helloWorld2>error_noSpace.txt (myShell treats it as ./helloWold2)
+(9) ./helloWorld<input_noSpace.txt
+(10) ./helloWorld < input_exist.txt > output_combine.txt
+(11) ./helloWorld>output_combine_nospace.txt<input_exist.txt
+(12) ./helloWorld>output_combine_nospace.txt 2>error_combine_nospace.txt<input_exist.txt
+(13) ./helloWorld > output_error.txt > (output_error.txt shouldn't exist)
+(14) ./helloWorld > output_error.txt<>
+(15) ./helloWorld cmdArg1 cmdArg2 <input_exist.txt > output_cmd.txt
+(16) ./helloWorld cmdArg1<input_exist.txt cmdArg2>output_cmd.txt
+(17) ./helloWorld>output_ignore.txt>output_real.txt
+(18) ./helloWorld<input_ignore.txt<input_real.txt
+==============================================================================================================
+
+(3) Pipeline
+    I NEED TO CREATE A VECTOR EACH OF WHOSE ELEMENT IS ANOTHER VECTOR WHICHS STORES A PROGRAM AND ITS INFORMATION. THIS VECTOR IS ACTUALLY A FIELD OF THE REAL SHELL CLASS
+    i.  find how many pipes are there "|", use "|" as delimiter to divde this input string:
+        for example:
+    	   ./program_1 arg1 arg2 <input.txt|./program_2 arg1 arg2 > output.txt should be divided into:
+	          -./program_1 arg1 arg2 <input.txt      (*)
+                  -./program_2 arg1 arg2 >output.txt     (#)
+    
+    ii. (*) is the first program, create a pipfd and close pipfd[0], redirect stdout to pipfd[1],execute
+    	 (#) is the last  program, close pipfd[1], redirect stdin  to pipfd[0],execute
+
+    iii. Suppose we have 2 programs, the second program reads each character from stdin, when it encounters EOF, it stops reading. The first program's stdout should be redirected to pipe write end, writing data into write end and transfering data through pipe. The data will reach pipe read end. How can we let the second program know that it is EOF so that it can stop reading and continue executing? (close write end of the pipe)
+    (And also remember close the corresponding write end pipe in the parent process)

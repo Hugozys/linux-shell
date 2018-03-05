@@ -1,0 +1,2 @@
+./helloWorld cmdArg1 cmdArg2 < ./TEST_HERE/input_exist.txt > ./TEST_HERE/output_cmd.txt
+./helloWorld cmdArg1<./TEST_HERE/input_exist.txt cmdArg2>./TEST_HERE/output_cmd_2.txt

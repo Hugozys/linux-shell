@@ -1,0 +1,5 @@
+set ABC something
+echo $ABC
+set $notSet ABC others
+echo $ABC
+

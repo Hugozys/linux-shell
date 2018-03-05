@@ -1,0 +1,4 @@
+set ECE_551 A flipped class
+echo $ECE_551
+set ECE_551 is about to end
+echo $ECE_551

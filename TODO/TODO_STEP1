@@ -1,0 +1,126 @@
+					             BREAK
+GOAL: Read a command name and run it
+
+Questions to solve:
+
+STEP1:
+1. There are FIVE steps when running a command or program in a command shell
+  (1) Firstly command shell will call fork() to create a copy of itself, which is a new process(Unique PID)
+  -- The child and the parent is distinguished by the return value of fork()
+  -- In child process fork() returns 0 while in parent fork() returns the PID of child
+  -- If fork fails, -1 is returned in the parent and no child process is created, set errno
+  (2) Then call execeve to pass in the program/command about to execute, argv[] and maybe envp[]
+  -- Execeve replaces the running program in child process with the requested program.
+  -- Execeve passed argc argv and envp into main function of the requested program
+  -- On success, execeve doesn't return
+  -- If fails, execeve returns -1 and set errno
+  (3) execution arrow goes to the startup code(program in the child process) and then execution starts.
+  (4) Parent process is waiting for the change of child process's state, either terminated or stopped (loop)
+  
+    # WIFSTOPPED(status) -- return true if the child process was stopped by delivery of a signal
+    # WIFEXITED(status) -- return true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main()
+    # WEXITSTATUS(status) -- return the exit status of the child. This consists of the least significant 8 bits of the status argument that  the child specified in a call to exit(3) or _exit(2) or as the argument for a return statement in main()
+    # WIFSIGNALED(status) -- return true if the child process was terminated by a signal
+
+    # A state change is considered to be:
+      	- The child terminated
+	- The child was stopped by a signal
+	- The child was resumed by a signal
+  (5) When child process exits/terminates/stops, Parent process prints out message corresponding to the state and request for another input
+  
+  READ FORK, WAITPID AND EXECVE
+
+2. How to tell it's EOF for stdin?
+ After experiment, when I press Ctrl+D, that stands for EOF of std::in
+======================================================
+(TBS)3. When user open myShell and starts running program which cause an infinite loop on myShell and kills the program(Ctrl+C), the program but not myShell will exit and then myShell should display:
+Program was killed by signal X
+and goes back to initial state
+
+(TBS)4. When users open myShell and starts running program and stops the program (Ctrl+Z), the program should go to background but not myShell, instead myShell should display:
+Program was stopped by signal X
+and goes back to initial state
+
+(TBS)5. This problem follows after problem 4. When user enter fg, the shell should be brought back to foreground and myShell will display:
+Program was continued by signal X
+and keeps running program
+======================================================
+
+POSSIBLE TESTCASES:
+(1) Format to output:
+Now in the terminal, I'm gonna input ./myShell
+Then I should see
+myShell $
+If I hit "enter", then it should print myShell $ in the next line, Like the following:
+myShell $
+myShell $
+myShell $
+...
+
+Instead of hitting "enter", if I enter command like "ls" or a program like ./myProgram (one line)
+It should execute the program or command, output the message and then go back to the state of myShell $
+
+myShell $ ./myProgram
+Hello from myProgram
+Program exited with status X
+myShell $
+------------------------
+myShell $ ls
+commandShell.txt  documentation  numerics.txt  README  TODO  #TODO#
+myShell $
+------------------------
+
+
+After the specified program exits, my shell should print
+  [See man waitpid, and the WIFSIGNALED(status) macro]
+Program exited with status X
+OR
+Program was killed by signal X
+
+And then goes back to the initial state:
+myShell $
+
+------------------------
+
+When you type in exit or stdin reach EOF(ctrl D), exit myShell:
+
+myShell $ exit
+
+------------------------
+
+
+
+======================================================
+OO DESIGN:
+
+Since Drew said this was a good example to implement an OO design, I will try to think about that.
+
+We need to have a shell class which will be created when myShell starts running.
+
+This shell class may have the following fields:
+
+STEP1:
+char ** argv -- command line argument to pass into child
+int argc  -- number of argv to pass into child
+char ** envp -- environment variable to pass into child
+
+int status -- status of child process
+pid_t cpid -- return value of fork(used to tell child or parent)
+pid_t w   -- used when waiting for child to terminate
+
+
+
+This shell class may have the following method:
+
+- void requestInput() [request input from the user by output myShell $ ]
+- void parseInput() [parse the information input by user]
+- int getArgc() const [get the argc]
+- char ** getArgv() const [get the argv]
+- myShell() [constructor]
+- char *str2cstr(const string & str) [change string to cstr]
+- void forkAndExecve() [fork and execve and wait for child to respond]
+- void storeArgv(vector<string> & vec) [store each argument that is used into argv field of myShell class]
+- vector<string> seperate(stringstream &ss) [sepearte the line read from std::in into words]
+
+I MAY want to add more fields and methods when procede further.
+

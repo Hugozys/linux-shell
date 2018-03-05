@@ -1,0 +1,5 @@
+./helloWorld<./TEST_HERE/input_exist.txt>./TEST_HERE/output_noSpace.txt
+./helloWorld2>./TEST_HERE/error_noSpace.txt
+./helloWorld<./TEST_HERE/input_noSpace.txt
+./helloWorld>./TEST_HERE/output_combine_nospace.txt<./TEST_HERE/input_exist.txt
+./helloWorld>./TEST_HERE/output_combine_nospace2.txt 2>./TEST_HERE/error_combine_nospace.txt<./TEST_HERE/input_exist.txt

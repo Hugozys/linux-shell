@@ -1,0 +1,10 @@
+set
+set
+set testcase1
+set testcase2
+set testcase3 Apple
+set testcase4 Apple Banana Pineapple
+set testcase5         Charlie	Echo	1
+set &*@!%@$
+NOTSET yoBro
+

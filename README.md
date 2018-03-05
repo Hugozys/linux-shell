@@ -46,15 +46,15 @@ __You SHOULD test all of the test cases by manually type them in myShell.__
 
 ### STEP2: CONFIGURATION
 myShell consists of nine seperate files, they are:
- 1.myShell.h   (header file)
- 2.myShell.cpp (Top level entity,including main)
- 3.parseInput.cpp (step1 and step3_set)
- 4.    changeDIR.cpp  (step3_cd)
- 5.     findProgram.cpp (step2)
- 6.    accessVar.cpp  (step3)
- 7.   redirPipe.cpp  (step4_redirection)
- 8.  doAllButDir.cpp (step4_pipeline)
- 9.    pipeProgram.cpp (step4_pipeline)
+ 1. myShell.h   (header file)
+ 2. myShell.cpp (Top level entity,including main)
+ 3. parseInput.cpp (step1 and step3_set)
+ 4. changeDIR.cpp  (step3_cd)
+ 5. findProgram.cpp (step2)
+ 6. accessVar.cpp  (step3)
+ 7. redirPipe.cpp  (step4_redirection)
+ 8. doAllButDir.cpp (step4_pipeline)
+ 9. pipeProgram.cpp (step4_pipeline)
 
 - To make it easier for you to find the implementation of function when you are reading my code, I provide a list of function implementation in each cpp file:
 

@@ -1,37 +1,60 @@
-This txt file is used to show all the test cases that I come up with.
+## Linux Shell
+This is a very simple bash-like shell implementation done by me, as a course project of my programming course. The source code were written in C++.
 
+## Functionality
+This shell can realize most of the bash shell functionality, including the following:
+* run in-built linux command like ls, cat, less, etc.
+* run any linux executable program by specifying the program path
+* support pipeline functionality
+* support some parts of the output redirection functionality
+* change working directory
+* support adding, changing and saving enviornment vairables
+* support memorizing user-defined variables.
 
-STEP1: SOME WORDS BEFORE WE BEGIN
-- First of all, You can find all of the test cases in ./testMyShell directory. There are 37 test files in that folder, each of which contains one or multiple commands that I would like to test with. To make your life easy, open Description file in the same folder. In this file, I map each test file into specific name of what command(s) I am testing so that it is more human readable. Then please pay attention to another folder ./TEST_HERE. Inside of this folder, I wrote some files which will be useful to see the effect of serveral commands in couple of tests(redirection,rm,mv,cp).Also all the redirection test results will be found inside of this foler(After you type the command).
+***NOTE: This shell has not been implemented background running functionality, which means after you lanch a program with this shell, you can not make it run in the background***
 
-- Secondly, I wrote serveral tiny programs to test some of the commands. They are the following:
- i.   parseArgument
- ii.  sayHi
- iii. helloWorld
- iv.  printHelloWorld
- v.   kill
+## How to use 
+It is very simple to use this shell. First you will need to compile all the source file to generate an executable file called myShell. To do this type:
+```c++
+make
+```
+You will see an executable program called `myShell` appearing on your terminal. Then simply type `./myShell`, you will see the prompt information, which means you can use the shell already!
+
+## Testing
+---
+
+### STEP1: SOME WORDS BEFORE WE BEGIN
+* First of all, You can find all of the test cases in ./testMyShell directory. There are 37 test files in that folder, each of which contains one or multiple commands that I would like to test with. To make your life easy, open Description file in the same folder. In this file, I map each test file into specific name of what command(s) I am testing so that it is more human readable. Then please pay attention to another folder ./TEST_HERE. Inside of this folder, I wrote some files which will be useful to see the effect of serveral commands in couple of tests(redirection,rm,mv,cp).Also all the redirection test results will be found inside of this foler(After you type the command).
+
+* Secondly, I wrote serveral tiny programs to test some of the commands. They are the following:
+ 1.  parseArgument
+ 2.  sayHi
+ 3. helloWorld
+ 4.  printHelloWorld
+ 5.   kill
  
-NOTE: You can find the code of these programs in the corresponding cpp file. We will come to these programs in the upcoming test journey.
+***NOTE: You can find the code of these programs in the corresponding cpp file. We will come to these programs in the upcoming test journey.***
 
-- Thirdly, I wrote a ./run_all.sh bash script to run all the test cases in myShell and format the test results into a file called ./test_result.txt. When you are testing, you can REFERENCE to the input and output format in ./test_result.txt
+* Thirdly, I wrote a `./run_all.sh` bash script to run all the test cases in myShell and format the test results into a file called `./test_result.txt`. When you are testing, you can REFERENCE to the input and output format in `./test_result.txt`
 
-* You DO NOT NEED to run ./run_all.sh.
-* You SHOULD test all of the test cases by manually type them in myShell
+__You DO NOT NEED to run ./run_all.sh.__
 
-WARNING: One of the restriction of runing ./run_all.sh is that env command can't show the OLDPWD env var in the env list because it is running myShell in a bash script. However, if you type in the command mannually, this won't be the problem. When you are checking the output of command to the result in test_result.txt, please take this point into consideration.
+__You SHOULD test all of the test cases by manually type them in myShell.__
+
+***WARNING: One of the restriction of runing ./run_all.sh is that env command can't show the OLDPWD env var in the env list because it is running myShell in a bash script. However, if you type in the command mannually, this won't be the problem. When you are checking the output of command to the result in test_result.txt, please take this point into consideration.***
 
 
-STEP2: CONFIGURATION
+### STEP2: CONFIGURATION
 myShell consists of nine seperate files, they are:
- i.     myShell.h   (header file)
- ii.    myShell.cpp (Top level entity,including main)
- iii.   parseInput.cpp (step1 and step3_set)
- iv.    changeDIR.cpp  (step3_cd)
- v.     findProgram.cpp (step2)
- vi.    accessVar.cpp  (step3)
- vii.   redirPipe.cpp  (step4_redirection)
- viii.  doAllButDir.cpp (step4_pipeline)
- xi.    pipeProgram.cpp (step4_pipeline)
+ 1.     myShell.h   (header file)
+ 2.    myShell.cpp (Top level entity,including main)
+ 3.   parseInput.cpp (step1 and step3_set)
+ 4.    changeDIR.cpp  (step3_cd)
+ 5.     findProgram.cpp (step2)
+ 6.    accessVar.cpp  (step3)
+ 7.   redirPipe.cpp  (step4_redirection)
+ 8.  doAllButDir.cpp (step4_pipeline)
+ 9.    pipeProgram.cpp (step4_pipeline)
 
 - To make it easier for you to find the implementation of function when you are reading my code, I provide a list of function implementation in each cpp file:
 
@@ -84,7 +107,7 @@ doAllButDir.cpp:
 -doAllButDir
 
 
-STEP3: MAKE
+### STEP3: MAKE
  - In bash, type make and then hit enter. You should see five executeable files genreated:
  i.      myShell
  ii.     parseArgument
@@ -98,7 +121,7 @@ STEP3: MAKE
  - Now we are ready to test, enjoy.
 
 
-STEP4: TEST
+### STEP4: TEST
 
 (1) kill signal and exit (test01)
 -Look up the program kill.cpp. The program throws an exception but without try...catch clause. So the exception will progagate out of main and call terminate() to kill itself. myShell should print: program was killed by signal X
@@ -285,7 +308,7 @@ I design my pipeline functionality in such way that
 - I assume you know
 
  
-STEP5: AND BEYOND
+### STEP5: AND BEYOND
 
 Thank you for reading this tedious and boring TESTING.txt file. Please give my as much feedback as possible. This will help me improve my programming skills in my future study. ECE551 is a flipped class with intense pace, which is annoying and tiring, but I definitely learn a lot from this course. It's painful but with a lot of fun. Let's meet in the final exam! Best wishes for all the TAs and instructors. :)
 
